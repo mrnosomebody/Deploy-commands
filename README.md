@@ -3,7 +3,7 @@ Cоздание пользователя
 ```
 adduser username
 usermod -aG sudo username
-group username
+groups username
 su username
 ```
 ---------------------------------------
