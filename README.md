@@ -1,12 +1,14 @@
-оздание пользователя
+Cоздание пользователя
 ---------------------
+```
 adduser username
 usermod -aG sudo username
 group username
 su username
+```
 ---------------------------------------
 Компиляции python 3.6
-----------------------
+```
 sudo apt-get install -y make build-essential libssl-dev zlib1g-dev
 sudo apt-get install -y libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm
 sudo apt-get install -y libncurses5-dev  libncursesw5-dev xz-utils tk-dev
@@ -18,10 +20,10 @@ cd Python-3.6.4
 make -j8
 sudo make altinstall
 python3.6
-
+```
 -----------------------------------------
 Создание базы данных
---------------------
+```
 sudo -u postgres psql
 CREATE DATABASE banket;
 CREATE USER b_user WITH PASSWORD 'She3348Jdfurfghs';
@@ -30,14 +32,14 @@ ALTER ROLE userdb SET default_transaction_isolation TO 'read committed';
 ALTER ROLE userdb SET timezone TO 'UTC';
 GRANT ALL PRIVILEGES ON DATABASE movie TO userdb;
 \q
-
+```
 ----------------------------------------
 Установка Gunicorn
-------------------
+```
 gunicorn project.wsgi:application --bind 111.222.333.44:8000
-----------------------------------------
+```
 Настрока nginx
---------------
+```
 server {
     listen 80;
     server_name 111.222.333.44; # здесь прописать или IP-адрес или доменное имя сервера
@@ -57,10 +59,9 @@ server {
 }
 
 sudo service nginx restart
-
-------------------------------------------
+```
 For SSL
--------
+```
 map $sent_http_content_type $expires {
     "text/html"                 epoch;
     "text/html; charset=utf-8"  epoch;
@@ -102,9 +103,10 @@ server{
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
-
+```
 ---------------------------------------
 Настройка supervisor
+```
 cd /etc/supervisor/conf.d/
 sudo update-rc.d supervisor enable
 sudo service supervisor start
@@ -112,4 +114,4 @@ sudo supervisorctl reread
 sudo supervisorctl update
 sudo supervisorctl status project
 sudo supervisorctl restart project
---------------------
+```
